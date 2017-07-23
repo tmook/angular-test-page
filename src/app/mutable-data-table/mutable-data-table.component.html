@@ -1,0 +1,31 @@
+<div>
+  <span>
+    {{ title != null ? title : 'Mutable Data Table' }}
+  </span>
+  <app-d3-bar-chart
+     [data]="[[0,1],[2,3],[4,5]]">
+   </app-d3-bar-chart>
+</div>
+<!--
+  <Table bordered condensed hover striped>
+    <thead>
+      <DataTableHeaderRow 
+        categories={cleanCategories} >
+        <Button 
+          bsSize="xsmall" 
+          bsStyle={this.state.isPlot ? "success" : "default"} 
+          onClick={this.handlePlot}>
+          Plot
+        </Button>
+      </DataTableHeaderRow>
+    </thead>
+    <tbody>
+      {dataRows}
+      <DataTableAppendRow 
+        categories={cleanCategories}
+        handleRowAdd={this.handleRowAdd} />
+    </tbody>
+  </Table>
+  {this.state.isPlot && <D3 title type="animal" data={this.state.data}/>}
+</div>
+-->
