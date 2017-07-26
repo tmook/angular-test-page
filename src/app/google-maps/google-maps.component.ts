@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, AfterContentInit, OnDestroy, ViewChild, ElementRef, Input } from '@angular/core';
-import * as env from 'environments/.env'
+import { environment } from 'environments/environment'
+import { MARKERS } from '../utils/Constants'
 declare var google:any;
 
 @Component({
@@ -9,14 +10,18 @@ declare var google:any;
 })
 export class GoogleMapsComponent implements OnInit, AfterContentInit, OnDestroy {
   @ViewChild('mapContainer') private mapContainer: ElementRef;
-  @Input() private map: any;
-  @Input() private mapMarkers: Array<any>;
+  @Input() private markers: Array<any>;
   @Input() private center: any;
   @Input() private zoom: number;
+
+  private map: any;
+  private mapMarkers: Array<any>;
 
   constructor() { }
 
   ngOnInit() { 
+    //init mapMarkers
+    this.mapMarkers = [];
     //default map center
     if(!this.center) { this.center = { lat: 21.299772, lng: -157.815886 }; }
     //default zoom level
@@ -35,7 +40,7 @@ export class GoogleMapsComponent implements OnInit, AfterContentInit, OnDestroy 
           zoom: this.zoom
         }
       );
-      this.loadMarkers(this.mapMarkers);
+      this.loadMarkers(this.markers);
       this.showMarkers();
     }else{
       console.log(
@@ -73,14 +78,12 @@ export class GoogleMapsComponent implements OnInit, AfterContentInit, OnDestroy 
     //remove google.maps.event listeners
   }
 
-  /* this should trigger when GoogleMaps state.center is updated */
+  /* this should trigger when GoogleMaps center or markers are updated */
   ngOnChanges() {
-    if(prevProps.center !== this.props.center) {
-      this.panToCenter(this.props.center);
-    }
-    if(prevProps.markers !== this.props.markers) {
+    if(this.map){
+      this.panToCenter(this.center);
       this.clearMarkers();
-      this.loadMarkers(this.props.markers);
+      this.loadMarkers(this.mapMarkers);
       this.showMarkers();
     }
   }
@@ -91,12 +94,12 @@ export class GoogleMapsComponent implements OnInit, AfterContentInit, OnDestroy 
   }
 
   loadMarkers(markers){
-    if(markers.length > 0 ){
+    if(markers && markers.length > 0 ){
       markers.forEach( marker => {
         const m = new google.maps.Marker({
           position: {lat:marker.lat, lng:marker.lng},
           map: this.map,
-          icon: CONST.MARKERS[marker.color]
+          icon: MARKERS[marker.color]
         });
 
         this.mapMarkers.push(m);
@@ -105,7 +108,9 @@ export class GoogleMapsComponent implements OnInit, AfterContentInit, OnDestroy 
   }
 
   setMarkers(map){
-    this.mapMarkers.forEach( marker => marker.setMap(map) );
+    if(this.mapMarkers){
+      this.mapMarkers.forEach( marker => marker.setMap(map) );
+    }
   }
 
   showMarkers(){

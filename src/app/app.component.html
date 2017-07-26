@@ -7,7 +7,8 @@
   <div class="row">
     <div class="col-xs-6 borderRight">
       <!--MutableDataTable data={ANIMALS} hideField={['id']}/-->
-      <app-mutable-data-table></app-mutable-data-table>
+      <span>Mutable Data Table</span>
+      <!--app-mutable-data-table [data]="animal_data" [hideField]="['id']"></app-mutable-data-table-->
     </div>
     <div class="col-xs-6">
       <div [ngStyle]="{'min-height.px':200}">
@@ -19,22 +20,20 @@
   <div class="row">
     <hr class="borderTop"/>
     <div class="col-xs-12">
-      <!--GoogleMaps markers={MAPS.markers} center={MAPS.center}/-->
-      <app-google-maps></app-google-maps>
+      <span>Google Maps</span>
+      <app-google-maps [center]="map_center" [markers]="map_markers" > </app-google-maps>
     </div>
   </div>
   <div class="row">
     <hr class="borderTop"/>
     <div class="col-xs-6">
       <span>Three JS</span>
-      <p>DELETE-three js</p>
       <!--app-threejs-cube-scene></app-threejs-cube-scene-->
-      <!--app-threejs-cube-scene-alternative></app-threejs-cube-scene-alternative-->
+      <app-threejs-cube-scene-alternative></app-threejs-cube-scene-alternative>
     </div>
     <div class="col-xs-6 borderLeft">
         <span>Unity WebGL</span>
-        <p>DELETE-three js</p>
-        <!--app-unity-webgl [sceneSource]="'./assets/unity/Builds.json'"></app-unity-webgl-->
+        <app-unity-webgl [sceneSource]="'./assets/unity/Builds.json'"></app-unity-webgl>
     </div>
   </div>
 </div>
