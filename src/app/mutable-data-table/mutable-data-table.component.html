@@ -1,10 +1,10 @@
 <table *ngIf="data" class="table table-bordered table-condensed table-hover table-striped">
   <thead>
     <tr>
-      <th *ngFor="let c of cleanCategories; let i=index">
+      <th *ngFor="let c of tableCategories">
         {{c.charAt(0).toUpperCase()+c.slice(1)}}
       </th>
-      <th>
+      <th class="text-center">
         <button 
           class="btn btn-xs"
           [ngClass]="isPlot ? 'btn-success' : 'btn-default'"
@@ -15,17 +15,29 @@
     <tr>
   </thead>
   <tbody>
-    <tr>
-      <ng-template ngFor #row [ngForOf]="data">
-        <ng-template ngFor #d [ngForOf]="row">
-          <td *ngIf="d !== 'id'">{{d}}</td>
-        </ng-template>
-      </ng-template>
-      <td>
-        <button type="button" class="btn btn-danger">✖</button>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let cat of tableCategories">
+        {{row[cat]}}
+      </td>
+      <td class="text-center">
+        <button type="button" class="btn btn-danger" (click)="deleteRow(row.id)">✖</button>
       </td>
     </tr>
     <!--DataTableAppendRow [categories]="cleanCategories" handleRowAdd={this.handleRowAdd} /-->
+    <tr>
+      <td *ngFor="let cat of tableCategories;let i = index">
+        <input 
+          class="form-control" 
+          type="text" 
+          (keypress)="handleKeyPress($event)"
+          [(ngModel)]="inputRefList[cat]" 
+          name={{cat}} 
+          placeholder={{toUpper(cat)}}>
+      </td>
+      <td>
+        <button type="button" class="btn btn-default" (click)="handleSubmit()">add</button>
+      </td>
+    </tr>
   </tbody>
 </table>
-<app-d3-bar-chart *ngIf="isPlot" [data]="animal_data"></app-d3-bar-chart>
+<app-d3-bar-chart *ngIf="isPlot" [data]="plot_data"></app-d3-bar-chart>
