@@ -6,7 +6,6 @@
   </div>
   <div class="row">
     <div class="col-xs-6 borderRight">
-      <!--MutableDataTable data={ANIMALS} hideField={['id']}/-->
       <span>Mutable Data Table</span>
       <app-mutable-data-table [data]="animal_data" [hideField]="['id']"></app-mutable-data-table>
     </div>
@@ -21,7 +20,8 @@
     <hr class="borderTop"/>
     <div class="col-xs-12">
       <span>Google Maps</span>
-      <!--app-google-maps [center]="map_center" [markers]="map_markers" > </app-google-maps-->
+      <app-google-maps [center]="map_center" [markers]="map_markers" > </app-google-maps>
+      <app-google-maps-marker-table [gmap]="MAPS" [hideField]="['id']" (onMapUpdate)="updateMap($event)"> </app-google-maps-marker-table>
     </div>
   </div>
   <div class="row">

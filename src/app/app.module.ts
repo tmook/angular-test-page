@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { CenterPageTitleComponent } from './center-page-title/center-page-title.component';
 import { MutableDataTableComponent } from './mutable-data-table/mutable-data-table.component';
 import { D3BarChartComponent } from './D3/d3-bar-chart/d3-bar-chart.component';
-import { GoogleMapsComponent } from './google-maps/google-maps.component';
+import { GoogleMapsComponent } from './GoogleMaps/google-maps/google-maps.component';
 import { ThreejsCubeSceneComponent } from './ThreeJS/threejs-cube-scene/threejs-cube-scene.component';
 import { ThreejsCubeSceneAlternativeComponent } from './ThreeJS/threejs-cube-scene-alternative/threejs-cube-scene-alternative.component';
 import { UnityWebglComponent } from './unity-webgl/unity-webgl.component';
+import { GoogleMapsMarkerTableComponent } from './GoogleMaps/google-maps-marker-table/google-maps-marker-table.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UnityWebglComponent } from './unity-webgl/unity-webgl.component';
     ThreejsCubeSceneComponent,
     UnityWebglComponent,
     ThreejsCubeSceneAlternativeComponent,
+    GoogleMapsMarkerTableComponent,
   ],
   imports: [
     BrowserModule,

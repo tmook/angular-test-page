@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -46,6 +46,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
+    this.updateAll();
+  }
+
+  updateMap(e){
+    this.MAPS = e;
+    this.updateAll();
+  }
+
+  updateAll(){
     this.animal_data = this.ANIMALS;
     this.map_center = this.MAPS.center;
     this.map_markers = this.MAPS.markers;

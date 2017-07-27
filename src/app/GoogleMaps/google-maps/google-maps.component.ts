@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, AfterContentInit, OnDestroy, ViewChild, ElementRef, Input } from '@angular/core';
 import { environment } from 'environments/environment'
-import { MARKERS } from '../utils/Constants'
+import { MARKERS } from '../../utils/Constants'
 declare var google:any;
 
 @Component({
@@ -83,7 +83,7 @@ export class GoogleMapsComponent implements OnInit, AfterContentInit, OnDestroy 
     if(this.map){
       this.panToCenter(this.center);
       this.clearMarkers();
-      this.loadMarkers(this.mapMarkers);
+      this.loadMarkers(this.markers);
       this.showMarkers();
     }
   }
