@@ -9,9 +9,10 @@ import * as d3 from 'd3';
 })
 export class D3BarChartComponent implements OnInit, OnChanges {
   @ViewChild('chart') private chartContainer: ElementRef;
-  @Input() private title: string;
+  @Input() public title: string;
   @Input() private data: Array<any>;
-  private isChart: boolean = false;
+
+  public isChart: boolean = false;
   private margin: any = {top: 20, right: 20, bottom: 20, left: 25};
   private chart: any;
   private width: number;

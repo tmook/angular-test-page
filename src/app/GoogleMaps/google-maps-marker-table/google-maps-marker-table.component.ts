@@ -15,8 +15,8 @@ export class GoogleMapsMarkerTableComponent implements OnInit {
   @Output() onMapUpdate: EventEmitter<any> = new EventEmitter<any>();
 
   private color: string;
-  private lat: string;
-  private lng: string;
+  public lat: string;
+  public lng: string;
 
   constructor() { }
 

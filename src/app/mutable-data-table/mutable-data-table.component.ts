@@ -8,10 +8,10 @@ import hashCode from '../utils/hashCode';
   styleUrls: ['./mutable-data-table.component.css']
 })
 export class MutableDataTableComponent implements OnInit {
-  @Input() private data: Array<any>;
+  @Input() public data: Array<any>;
   @Input() private hideField: Array<any>;
 
-  private isPlot: boolean;
+  public isPlot: boolean;
   private tableCategories: Array<any>;
   private plot_data: Array<any>;
   private inputRefList: any;
