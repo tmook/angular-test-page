@@ -1309,7 +1309,7 @@ function isValidCoordinate(lat, lng) {
 // The file contents for the current environment will overwrite these during build.
 var environment = {
     production: false,
-    GOOGLE_API_KEY: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo"
+    GOOGLE_API_KEY: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo",
 };
 //# sourceMappingURL=environment.js.map
 
